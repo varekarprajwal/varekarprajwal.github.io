@@ -1,581 +1,1908 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-    <title>Prajwal P Varekar Portfolio</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Prajwal Purushotham Varekar — GPU Systems Engineer specializing in CUDA kernel optimization, HPC pipelines, and high-performance ML systems.">
+<meta name="keywords" content="GPU Engineer, CUDA, HPC, CUDA kernels, Nsight, parallel computing, deep learning, NVIDIA">
+<meta property="og:title" content="Prajwal Varekar — GPU Systems Engineer">
+<meta property="og:description" content="790× GPU speedup. 112 GB/s bandwidth. CUDA kernel optimization & HPC for ML.">
+<title>Prajwal Varekar | GPU Systems Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS RESET & VARIABLES ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+:root {
+  --bg-0: #050508;
+  --bg-1: #0d0d14;
+  --bg-2: #12121c;
+  --bg-3: #1a1a28;
+  --bg-card: #0f0f1a;
+  --border: rgba(255,255,255,0.06);
+  --border-bright: rgba(255,255,255,0.12);
+  --amber: #f5a623;
+  --amber-dim: rgba(245,166,35,0.15);
+  --amber-glow: rgba(245,166,35,0.35);
+  --cyan: #00d4ff;
+  --cyan-dim: rgba(0,212,255,0.12);
+  --green: #39ff90;
+  --red: #ff4757;
+  --text-1: #f0f0f8;
+  --text-2: #9090b0;
+  --text-3: #5a5a80;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Syne', sans-serif;
+  --radius: 6px;
+  --radius-lg: 12px;
+  --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+  --glow-amber: 0 0 40px rgba(245,166,35,0.2);
+  --glow-cyan: 0 0 40px rgba(0,212,255,0.15);
+}
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+[data-theme="light"] {
+  --bg-0: #f4f4f8;
+  --bg-1: #ffffff;
+  --bg-2: #f8f8fc;
+  --bg-3: #ededf5;
+  --bg-card: #ffffff;
+  --border: rgba(0,0,0,0.07);
+  --border-bright: rgba(0,0,0,0.14);
+  --text-1: #0d0d1a;
+  --text-2: #444466;
+  --text-3: #888899;
+  --glow-amber: 0 0 20px rgba(245,166,35,0.15);
+  --glow-cyan: 0 0 20px rgba(0,212,255,0.1);
+}
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+html { scroll-behavior: smooth; font-size: 16px; }
 
-    <link rel="stylesheet" href="css/aos.css">
+body {
+  font-family: var(--font-mono);
+  background: var(--bg-0);
+  color: var(--text-1);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-0); }
+::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 2px; }
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+/* ===== SELECTION ===== */
+::selection { background: var(--amber-dim); color: var(--amber); }
 
+/* ===== GRID BACKGROUND ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(245,166,35,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,166,35,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
 
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  height: 60px;
+  background: rgba(5,5,8,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
 
-    <style>
-        /*======================================
-//--//-->   ABOUT
-======================================*/
+[data-theme="light"] nav { background: rgba(244,244,248,0.85); }
 
-        .about-mf .box-shadow-full {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-        }
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--amber);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.nav-logo span { color: var(--text-2); }
 
-        .about-mf .about-img {
-            margin-bottom: 2rem;
-        }
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
 
-        .about-mf .about-img img {
-            margin-left: 10px;
-        }
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--amber);
+  transition: width var(--transition);
+}
+.nav-links a:hover { color: var(--amber); }
+.nav-links a:hover::after { width: 100%; }
 
+.nav-controls { display: flex; align-items: center; gap: 1rem; }
 
-        .skill-mf .progress {
-            /* background-color: #cde1f8; */
-            margin: .5rem 0 1.2rem 0;
-            border-radius: 0;
-            height: .7rem;
-        }
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-bright);
+  color: var(--text-2);
+  width: 34px; height: 34px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  transition: all var(--transition);
+}
+.theme-toggle:hover { border-color: var(--amber); color: var(--amber); }
 
-        .skill-mf .progress .progress-bar {
-            height: .7rem;
-            background-color: #ffbd39;
-        }
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: 1px solid var(--border-bright);
+  color: var(--text-1);
+  width: 34px; height: 34px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 16px; height: 1.5px;
+  background: var(--text-1);
+  transition: all var(--transition);
+}
 
+/* ===== MOBILE NAV ===== */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 60px; left: 0; right: 0;
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem clamp(1.5rem,5vw,4rem);
+  z-index: 999;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--transition);
+}
+.mobile-nav a:hover { color: var(--amber); }
 
-        /* Animation styles */
-        #typing-animation {
-            position: relative;
-            font-size: 30px;
-            font-weight: bold;
-            color: rgb(255, 255, 255);
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typing 3s steps(20, end) infinite;
-        }
+/* ===== SECTION BASE ===== */
+section { position: relative; z-index: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
 
-        #typing-animation:before {
-            content: "";
-            /* position: absolute; */
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: #ccc;
-            animation: typing-cursor 0.5s ease-in-out infinite;
-        }
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--amber);
+}
 
-        @keyframes typing {
-            from {
-                width: 0;
-            }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: var(--text-1);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
 
-            to {
-                width: 100%;
-            }
-        }
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 60px;
+  position: relative;
+  overflow: hidden;
+}
 
-        @keyframes typing-cursor {
-            from {
-                width: 5px;
-            }
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+  top: -100px; right: -150px;
+  pointer-events: none;
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+.hero-glow-2 {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+  bottom: 0; left: -100px;
+  pointer-events: none;
+  animation: pulseGlow 8s ease-in-out infinite reverse;
+}
 
-            to {
-                width: 0;
-            }
-        }
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
 
+.hero-content { padding: 4rem 0 6rem; }
 
-        /* project image zoom effect */
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--amber-dim);
+  border: 1px solid rgba(245,166,35,0.3);
+  color: var(--amber);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+  animation: fadeSlideUp 0.6s ease both;
+}
+.hero-tag::before { content: '●'; font-size: 0.5rem; animation: blink 1.5s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        .zoom-effect {
-            overflow: hidden;
-            transition: transform 0.3s ease-out;
-        }
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  color: var(--text-1);
+  margin-bottom: 0.5rem;
+  animation: fadeSlideUp 0.6s 0.1s ease both;
+}
+.hero-name .accent { color: var(--amber); }
 
-        .zoom-effect:hover {
-            transform: scale(1.1);
-        }
-    </style>
+.hero-role {
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--text-2);
+  margin-bottom: 1.5rem;
+  animation: fadeSlideUp 0.6s 0.2s ease both;
+}
+.hero-role .cursor {
+  display: inline-block;
+  width: 2px; height: 1.1em;
+  background: var(--amber);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 0.8s step-end infinite;
+}
 
+.hero-desc {
+  max-width: 580px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--text-2);
+  margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.6s 0.3s ease both;
+}
 
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 0.6s 0.35s ease both;
+}
+.stat-item { }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--amber);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: 0.2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 0.6s 0.4s ease both;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  border: none;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--amber);
+  color: #000;
+}
+.btn-primary:hover {
+  background: #ffbf40;
+  box-shadow: 0 0 20px var(--amber-glow);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--text-1);
+  border: 1px solid var(--border-bright);
+}
+.btn-secondary:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+  transform: translateY(-1px);
+}
+
+.hero-socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  animation: fadeSlideUp 0.6s 0.45s ease both;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius);
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all var(--transition);
+}
+.social-link:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-3);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: fadeSlideUp 1s 0.8s ease both;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--amber), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:1;transform:scaleY(1);}50%{opacity:0.4;transform:scaleY(0.6);} }
+
+/* ===== ABOUT ===== */
+#about {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-text p {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: var(--text-2);
+  margin-bottom: 1.25rem;
+}
+
+.strengths-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+.strengths-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+.strengths-list li::before {
+  content: '▸';
+  color: var(--amber);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.about-right { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: border-color var(--transition);
+}
+.info-card:hover { border-color: var(--amber); }
+
+.info-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.75rem;
+}
+.info-card-value {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-1);
+  line-height: 1.6;
+}
+
+/* ===== SKILLS ===== */
+#skills {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.skills-intro {
+  max-width: 640px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.skill-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--amber);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.skill-category:hover { border-color: var(--border-bright); transform: translateY(-2px); }
+.skill-category:hover::before { opacity: 1; }
+
+.skill-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.skill-cat-icon {
+  width: 32px; height: 32px;
+  background: var(--amber-dim);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+.skill-cat-name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: 0.05em;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.3rem 0.6rem;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-2);
+  transition: all var(--transition);
+}
+.skill-tag:hover { border-color: var(--amber); color: var(--amber); background: var(--amber-dim); }
+.skill-tag.hot { border-color: rgba(245,166,35,0.3); color: var(--amber); background: var(--amber-dim); }
+
+/* ===== PROJECTS ===== */
+#projects {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.projects-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr 1fr;
+}
+.project-featured { grid-column: 1 / -1; }
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--amber-dim) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+.project-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: var(--glow-amber); }
+.project-card:hover::after { opacity: 1; }
+
+.project-featured .project-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+}
+
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.project-num {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-1);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.project-desc {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--text-2);
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.project-metrics {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.metric-val {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--amber);
+}
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.stack-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0,212,255,0.2);
+  color: var(--cyan);
+}
+
+.project-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  text-decoration: none;
+  border: 1px solid var(--border-bright);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+.project-link:hover { color: var(--amber); border-color: var(--amber); }
+.project-link.pub { color: var(--green); border-color: rgba(57,255,144,0.3); }
+.project-link.pub:hover { background: rgba(57,255,144,0.1); }
+
+/* Featured project extras */
+.project-featured-visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 200px;
+}
+.perf-badge {
+  text-align: center;
+  background: var(--amber-dim);
+  border: 1px solid rgba(245,166,35,0.3);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  min-width: 140px;
+}
+.perf-badge-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--amber);
+  line-height: 1;
+}
+.perf-badge-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: 0.25rem;
+}
+
+/* ===== EXPERIENCE ===== */
+#experience {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.experience-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.exp-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all var(--transition);
+  position: relative;
+}
+.exp-card:hover { border-color: var(--amber); }
+
+.exp-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+.exp-left { flex: 1; }
+.exp-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 0.25rem;
+}
+.exp-company {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--amber);
+}
+.exp-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+.exp-date {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.exp-badge {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: rgba(57,255,144,0.1);
+  border: 1px solid rgba(57,255,144,0.25);
+  padding: 0.2rem 0.5rem;
+  border-radius: 100px;
+}
+.exp-badge.past { color: var(--text-3); background: transparent; border-color: var(--border); }
+
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.exp-bullets li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text-2);
+  padding-left: 1.4rem;
+  position: relative;
+}
+.exp-bullets li::before {
+  content: '→';
+  color: var(--amber);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.exp-bullets li strong { color: var(--text-1); font-weight: 500; }
+
+/* ===== EDUCATION ===== */
+#education {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+.edu-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all var(--transition);
+}
+.edu-card:hover { border-color: var(--amber); }
+.edu-degree {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+.edu-school {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+.edu-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.edu-year {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-3);
+}
+.edu-gpa {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--green);
+  background: rgba(57,255,144,0.1);
+  border: 1px solid rgba(57,255,144,0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+.edu-courses {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-3);
+  line-height: 1.7;
+}
+
+/* ===== ACHIEVEMENTS ===== */
+#achievements {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+
+.achievement-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.achievement-card:hover { border-color: var(--amber); transform: translateY(-2px); }
+
+.achievement-icon {
+  width: 40px; height: 40px;
+  background: var(--amber-dim);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+.achievement-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-1);
+  line-height: 1.3;
+}
+.achievement-desc {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--text-2);
+  line-height: 1.7;
+  flex: 1;
+}
+.achievement-meta {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+/* ===== CONTACT ===== */
+#contact {
+  padding: 7rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.contact-info-item:hover { border-color: var(--amber); }
+
+.contact-info-icon {
+  width: 32px; height: 32px;
+  background: var(--amber-dim);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.contact-info-text { flex: 1; }
+.contact-info-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: block;
+  margin-bottom: 0.1rem;
+}
+.contact-info-value {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-1);
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.form-input, .form-textarea {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-1);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.7rem 1rem;
+  outline: none;
+  transition: border-color var(--transition);
+  width: 100%;
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-3); }
+.form-input:focus, .form-textarea:focus { border-color: var(--amber); }
+.form-textarea { resize: vertical; min-height: 120px; }
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-3);
+}
+.footer-copy span { color: var(--amber); }
+.footer-socials { display: flex; gap: 0.75rem; }
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-3);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: all var(--transition);
+}
+.footer-social:hover { border-color: var(--amber); color: var(--amber); }
+
+/* ===== PROGRESS BARS (scroll-animated) ===== */
+.progress-bar-wrap {
+  margin-bottom: 0.75rem;
+}
+.progress-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-2);
+  margin-bottom: 0.3rem;
+}
+.progress-bar-track {
+  height: 3px;
+  background: var(--bg-3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--amber), var(--cyan));
+  border-radius: 2px;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-featured .project-card { grid-template-columns: 1fr; }
+  .project-featured-visual { align-items: flex-start; flex-direction: row; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; }
+  .btn { justify-content: center; }
+}
+</style>
 </head>
+<body>
 
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <a href="#hero" class="nav-logo">PPV<span>.dev</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#skills" onclick="closeMobileNav()">Skills</a>
+  <a href="#experience" onclick="closeMobileNav()">Experience</a>
+  <a href="#projects" onclick="closeMobileNav()">Projects</a>
+  <a href="#education" onclick="closeMobileNav()">Education</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+</div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Prajwal P Varekar</a>
-            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
-                data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav nav ml-auto">
-                    <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-                    <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-                    <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-                    <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
-                    <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-                </ul>
-            </div>
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">Available for Opportunities</div>
+      <h1 class="hero-name">Prajwal<br><span class="accent">Varekar</span></h1>
+      <p class="hero-role">
+        <span id="typed-role">GPU Systems Engineer</span><span class="cursor"></span>
+      </p>
+      <p class="hero-desc">
+        Building high-performance GPU compute pipelines with CUDA kernel optimization,
+        HPC for ML, and GPU microarchitecture expertise. 2 years of combined industry &amp;
+        research experience at Siemens Healthineers and academic labs.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">790×</div>
+          <div class="stat-label">GPU Speedup</div>
         </div>
-    </nav>
-    <section id="home-section" class="hero">
-        <div class="home-slider  owl-carousel">
-            <div class="slider-item ">
-                <div class="overlay"></div>
-                <div class="container">
-                    <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end"
-                        data-scrollax-parent="true">
-                        <div class="one-third js-fullheight order-md-last img"
-                            style="background-image:url(images/bg_1.png);">
-                            <div class="overlay"></div>
-                        </div>
-                        <div class="one-forth d-flex  align-items-center ftco-animate"
-                            data-scrollax=" properties: { translateY: '70%' }">
-                            <div class="text">
-                                <span class="subheading">Hello!</span>
-                                <h1 class="mb-4 mt-3">I'm <span>Prajwal P Varekar</span></h1>
-
-                                <span id="typing-animation"></span>
-
-                                <script>
-
-                                    // Initialize the typing animation
-                                    const typingAnimationElement = document.getElementById('typing-animation');
-
-                                    // Create an array of typing text
-                                    const typingTexts = [
-                                        'Engineer  ',
-                                        'Developer  ',
-                                        'Researcher  ',
-                                    ];
-
-                                    // Create a function to display the typing animation for a given text
-                                    function playTypingAnimation(text) {
-                                        // Loop through each character and add it to the element
-                                        for (let i = 0; i < text.length; i++) {
-                                            setTimeout(() => {
-                                                typingAnimationElement.textContent += text[i];
-                                            }, i * 200); // Increase the delay to slow down the typing animation
-                                        }
-
-                                        // Once the animation is complete, reset the text and start over
-                                        setTimeout(() => {
-                                            typingAnimationElement.textContent = '';
-                                            playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-                                        }, text.length * 200);
-                                    }
-
-                                    // Start the typing animation loop
-                                    playTypingAnimation(typingTexts[0]);
-
-                                </script>
-
-                                <br>
-                                <br>
-                                <h2>A Computer Science & Engineering Graduate</h2>
-                                <p>
-                                    <a href="https://github.com/varekarprajwal"
-                                        class="btn btn-primary py-3 px-4">My works</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-item">
+          <div class="stat-num">112 GB/s</div>
+          <div class="stat-label">Mem Bandwidth</div>
         </div>
-    </section>
-
-
-
-    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-        <div class="container">
-            <div class="row">
-                <div class="row d-flex align-items-stretch">
-                    <div class="col-md-6 col-lg-5 d-flex">
-                        <div class="img-about img d-flex align-items-stretch">
-                            <div class="overlay">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-5">
-                                        <div class="about-img">
-                                            <img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-7">
-                                        <div class="about-info">
-                                            <p><span class="title-s">Name: </span> <span>Prajwal P Varekar</span></p>
-                                            <p><span class="title-s">Role: </span> <span>Computer Science Engineer</span></p>
-                                            <p><span class="title-s">Experience: </span> <span>1.3 Years</span></p>
-                                            <p><span class="title-s">Address: </span> <span>Karnataka, India</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="skill-mf">
-                                    <p class="title-s">Skills</p>
-                                    <span>C/C++</span> <span class="pull-right">95%</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 95%;"
-                                            aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-
-                                    <span>Python</span> <span class="pull-right">90%</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 90%"
-                                            aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    
-                                    <span>Parallel Computing (CUDA, MPI, OpenMP)</span> <span class="pull-right">85%</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 85%"
-                                            aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-
-                                    <span>Computer Vision (OpenCV)</span> <span class="pull-right">90%</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 90%"
-                                            aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-
-                                    <span>Web Development</span> <span class="pull-right">80%</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-
-                                    <span>ML/AI</span> <span class="pull-right">85%</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 85%"
-                                            aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-                        <div class="row justify-content-start pb-3">
-                            <div class="col-md-12 heading-section ftco-animate">
-
-                                <h1 class="big">About</h1>
-                                <h2 class="mb-4">About Me</h2>
-
-                                <p>M.Tech graduate specializing in Parallel Computing and AI/ML, with a proven track record of developing high-performance solutions. Successfully engineered scalable systems that achieved a 100x speedup in content-based image retrieval and 40% workflow improvement in healthcare diagnostics, demonstrating a strong ability to drive efficiency and innovation.</p>
-                                <ul class="about-info mt-4 px-md-0 px-2">
-                                    <li class="d-flex"><span>Profile:</span> <span>Parallel Computing &amp; AI/ML</span>
-                                    </li>
-                                    <li class="d-flex"><span>Education:</span> <span>M.Tech (Computer Science and
-                                            Engineering)
-                                            <br />
-                                            B.E (Electronics and Communication Engineering)
-                                        </span></li>
-                                    <li class="d-flex"><span>Language:</span> <span>English,
-                                            Konkani,
-                                            Kannada,
-                                            Hindi</span></li>
-                                    <li class="d-flex"><span>Operating Systems:</span> <span>Linux,
-                                            Windows,
-                                            macOS</span></li>
-                                    <li class="d-flex"><span>Technical Skills:</span> <span>C/C++, Python, CUDA, MPI, OpenMP, Intel oneAPI,
-                                            <br />
-                                            OpenCV, PyTorch, Scikit-learn, Docker, Git, Azure, SQL</span></li>
-                                    <li class="d-flex"><span>Interest:</span> <span>High-Performance Computing,
-                                            Algorithm Design,
-                                            Computer Vision,
-                                            Machine Learning,
-                                            System Development</span></li>
-
-                                </ul>
-                            </div>
-                        </div>
-
-
-                        <div class="counter-wrap ftco-animate d-flex mt-md-3">
-                            <div class="text">
-                                <p class="mb-4">
-                                    <span>&nbsp;Multiple high-impact projects completed</span>
-                                </p>
-                                <p><a href="https://www.linkedin.com/in/prajwal-purushotham-varekar-645253181"
-                                        class="btn btn-primary py-3 px-3">LinkedIn</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-item">
+          <div class="stat-num">93%</div>
+          <div class="stat-label">Peak T4 BW</div>
         </div>
-    </section>
-
-
-
-
-    <section class="ftco-section ftco-no-pb" id="resume-section">
-        <div class="container">
-            <div class="row justify-content-center pb-5">
-                <div class="col-md-10 heading-section text-center ftco-animate">
-                    <h1 class="big big-2">Resume</h1>
-                    <h2 class="mb-4">Resume</h2>
-                    <p>M.Tech graduate with a specialization in High-Performance Computing and AI/ML, experienced in developing and optimizing complex systems in both academic and professional settings.</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <h1 class="big-4">Experience</h1>
-                <div class="underline"></div>
-            </div>
-            <br>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="resume-wrap ftco-animate">
-                        <span class="date">Jul, 2024 - Jul, 2025</span>
-                        <h2>Intern (Pre-Dev Researcher)</h2>
-                        <span class="position">Siemens Healthineers</span>
-                        <p class="mt-4">
-                        <ul>
-                            <li>Accomplished a 40% improvement in workflow efficiency by developing a unified application for quantitative organ assessment, automating liver & kidney functional analysis.</li>
-                            <li>Improved diagnostic precision by engineering a deep learning solution that achieved over 90% organ segmentation accuracy.</li>
-                            <li>Achieved precise volumetric analysis by implementing a robust image registration pipeline for multi-modal image fusion (SPECT/CT).</li>
-                            <li>Ensured robust GFR accuracy by creating an adaptive module with manufacturer-specific formulas based on DICOM tag analysis.</li>
-                        </ul>
-                        </p>
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-                    <div class="resume-wrap ftco-animate">
-                        <span class="date">Aug, 2021 - Sep, 2021</span>
-                        <h2>Internship</h2>
-                        <span class="position">Ei Systems - Technex 21</span>
-                        <p class="mt-4">
-                        <ul>
-                            <li>Gained a comprehensive understanding of the end-to-end ML workflow, from data processing to model deployment.</li>
-                            <li>Delivered a functional predictive model for land price prediction by implementing a multi-linear regression algorithm, achieving ~92% accuracy.</li>
-                        </ul>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-
-            <br>
-            <br>
-
-            <div class="row">
-                <h1 class="big-4">Education</h1>
-                <div class="underline"></div>
-            </div>
-            <br>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="resume-wrap ftco-animate">
-                        <span class="date">2023-2025</span>
-                        <h2>M.Tech in Computer Science and Engineering</h2>
-                        <span class="position">Manipal Institute of Technology</span>
-                        <p class="mt-4">GPA: 8.13</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="resume-wrap ftco-animate">
-                        <span class="date">2018-2022</span>
-                        <h2>B.E in Electronics & Communication Engineering</h2>
-                        <span class="position">Sahyadri College of Engineering & Management</span>
-                        <p class="mt-4">GPA: 7.47</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center mt-5">
-                <div class="col-md-6 text-center ftco-animate">
-                    <p><a href="Prajwal_Varekar_Resume.pdf" class="btn btn-primary py-4 px-5" download>Download CV</a></p>
-                </div>
-            </div>
+        <div class="stat-item">
+          <div class="stat-num">50×</div>
+          <div class="stat-label">CT/PET Accel.</div>
         </div>
-    </section>
+      </div>
+      <div class="hero-actions">
+        <a href="Prajwal_Purushotham_Varekar_Resume.pdf" download class="btn btn-primary">
+          ↓ Download Resume
+        </a>
+        <a href="#projects" class="btn btn-secondary">View Projects →</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/varekarprajwal" target="_blank" class="social-link" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/prajwal-purushotham-varekar-645253181" target="_blank" class="social-link" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:varekarprajwal@gmail.com" class="social-link" aria-label="Email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
-
-
-    <section class="ftco-section" id="project-section">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-5">
-                <div class="col-md-7 heading-section text-center ftco-animate">
-                    <h1 class="big big-2">Projects</h1>
-                    <h2 class="mb-4">Projects</h2>
-                    <p>Below are some of my key projects in High-Performance Computing and Machine Learning.</p>
-                </div>
-            </div>
-            <div class="row d-flex">
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry justify-content-end">
-                        <a href="https://github.com/varekarprajwal/HPCS_LBP" class="block-20 zoom-effect"
-                            style="background-image: url('images/proj_2.jpg');">
-                        </a>
-                        <div class="text mt-3 float-right d-block">
-
-                            <h3 class="heading"><a href="https://github.com/varekarprajwal/HPCS_LBP">Parallelized Local
-                                    Texton XOR Patterns Extraction</a></h3>
-                            <p>Achieved up to 100x speedup with CUDA and 13x with MPI over sequential methods in image feature extraction for real-time Content-Based Image Retrieval (CBIR) systems.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry justify-content-end">
-                        <a href="https://github.com/varekarprajwal/RMTC" class="block-20 zoom-effect"
-                            style="background-image: url('images/proj_1.jpg');">
-                        </a>
-                        <div class="text mt-3 float-right d-block">
-
-                            <h3 class="heading"><a href="https://github.com/varekarprajwal/RMTC">
-                                    Tomato Defect Detection Using Image processing</a></h3>
-                            <p>Developed a computationally efficient, hybrid ML pipeline that accomplished 92% accuracy in tomato defect detection without requiring GPUs.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry">
-                        <a href="https://github.com/varekarprajwal/Mobile-Recommendation-System" class="block-20 zoom-effect"
-                            style="background-image: url('images/proj_3.jpg');">
-                        </a>
-                        <div class="text mt-3 float-right d-block">
-
-                            <h3 class="heading"><a href="https://github.com/varekarprajwal/Mobile-Recommendation-System">
-                                    Mobile Recommendation System</a></h3>
-                            <p>Delivered mobile phone recommendations with ~89% accuracy using a multi-linear regression model trained on a custom dataset of mobile specifications.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">01 — Who I Am</div>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I'm a GPU Systems Engineer with 2 years of combined industry and research experience building 
+          high-performance compute pipelines. My work sits at the intersection of CUDA kernel engineering, 
+          GPU microarchitecture, and production ML systems.
+        </p>
+        <p>
+          At Siemens Healthineers, I built quantitative PET-CT clinical workflows and engineered CUDA kernels
+          that fused 10 sequential filtering stages into a single kernel pass — cutting global memory traffic 
+          by ~10× on real medical imaging data. I care deeply about the hardware-software boundary: 
+          roofline analysis, occupancy tuning, latency hiding, and memory coalescing are how I think.
+        </p>
+        <p>
+          I'm pursuing HPC/GPU roles in systems, ML infrastructure, or applied research where 
+          low-level performance actually matters.
+        </p>
+        <ul class="strengths-list">
+          <li>CUDA kernel optimization from PTX up — shared memory tiling, warp-level primitives, kernel fusion</li>
+          <li>Nsight Systems + Compute profiling — identifying real bottlenecks, not guessing</li>
+          <li>GPU microarchitecture awareness — SIMT, memory hierarchy, roofline-guided design</li>
+          <li>HPC parallelism — MPI domain decomposition, OpenMP, stream concurrency</li>
+          <li>Clinical ML pipelines — DL-based segmentation, DICOM, multi-modal image fusion</li>
+        </ul>
+      </div>
+      <div class="about-right">
+        <div class="info-card reveal reveal-delay-1">
+          <div class="info-card-label">Current Status</div>
+          <div class="info-card-value">Open to GPU/HPC/ML Systems roles<br>Bengaluru, Karnataka, India</div>
         </div>
-    </section>
-
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 heading-section text-center ftco-animate">
-                    <h1 class="big big-2">Contact</h1>
-                    <h2 class="mb-4">Contact Me</h2>
-                    <p>Below are the details to reach out to me!</p>
-                </div>
-            </div>
-
-            <div class="row d-flex contact-info mb-5">
-                <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-                    <div class="align-self-stretch box p-4 text-center">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <span class="icon-map-signs"></span>
-                        </div>
-                        <h3 class="mb-4">Address</h3>
-                        <p>Karnataka, India</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-                    <div class="align-self-stretch box p-4 text-center">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <span class="icon-phone2"></span>
-                        </div>
-                        <h3 class="mb-4">Contact Number</h3>
-                        <p><a href="tel://+918217620898">+91 8217620898</a></p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-                    <div class="align-self-stretch box p-4 text-center">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <span class="icon-paper-plane"></span>
-                        </div>
-                        <h3 class="mb-4">Email Address</h3>
-                        <p><a href="mailto:varekarprajwal@gmail.com">varekarprajwal@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-                    <div class="align-self-stretch box p-4 text-center">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <span class="icon-globe"></span>
-                        </div>
-                        <h3 class="mb-4">Portfolio</h3>
-                        <p><a
-                                href="https://varekarprajwal.github.io/">varekarprajwal.github.io</a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="container">
-                    <ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-                        <li class="ftco-animate normal-txt">Find me on </li>
-                        <li class="ftco-animate"><a href="https://github.com/varekarprajwal"><span
-                                    class="icon-github"></span></a></li>
-                        <li class="ftco-animate"><a
-                                href="https://www.linkedin.com/in/prajwal-purushotham-varekar-645253181"><span
-                                    class="icon-linkedin"></span></a></li>
-                        <li class="ftco-animate"><a href="https://leetcode.com/u/Prajwal_Varekar/"><span
-                                    class="icon-code"></span></a></li>
-                    </ul>
-                    <br>
-                </div>
-            </div>
-    </section>
-
-
-
-
-    <footer class="ftco-footer ftco-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-
-                    <p>Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
-                        is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a
-                            href="https://colorlib.com" target="_blank">Colorlib</a>
-                        </p>
-                </div>
-            </div>
+        <div class="info-card reveal reveal-delay-1">
+          <div class="info-card-label">Education</div>
+          <div class="info-card-value">M.Tech CSE — Manipal Institute of Technology (2025)<br>B.E. ECE — Sahyadri College (2022)</div>
         </div>
-    </footer>
+        <div class="info-card reveal reveal-delay-2">
+          <div class="info-card-label">Contact</div>
+          <div class="info-card-value">varekarprajwal@gmail.com<br>+91 82176 20898</div>
+        </div>
+        <div class="info-card reveal reveal-delay-2">
+          <div class="info-card-label">Core Interests</div>
+          <div class="info-card-value">GPU Architecture · CUDA Kernels · HPC · Medical Imaging · ML Systems</div>
+        </div>
+        <div class="info-card reveal reveal-delay-3">
+          <div class="info-card-label">Publications</div>
+          <div class="info-card-value">Springer CIS 2024 — First Author<br>"Parallelized Local Texton XOR Patterns Extraction"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">02 — Technical Stack</div>
+    <h2 class="section-title">Skills</h2>
+    <p class="skills-intro reveal">
+      Deep expertise in GPU systems, parallel compute, and the full CUDA programming model. 
+      Supporting competency in ML frameworks, profiling toolchains, and HPC distributed systems.
+    </p>
+    <div class="skills-grid">
+      <div class="skill-category reveal">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">⚡</div>
+          <div class="skill-cat-name">CUDA & GPU Programming</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">CUDA</span>
+          <span class="skill-tag hot">PTX</span>
+          <span class="skill-tag hot">cuBLAS</span>
+          <span class="skill-tag hot">CUTLASS</span>
+          <span class="skill-tag hot">Shared Memory Tiling</span>
+          <span class="skill-tag hot">Kernel Fusion</span>
+          <span class="skill-tag hot">Warp Primitives</span>
+          <span class="skill-tag hot">Memory Coalescing</span>
+          <span class="skill-tag">Stream Concurrency</span>
+          <span class="skill-tag">Pinned Memory</span>
+          <span class="skill-tag">Occupancy Opt.</span>
+          <span class="skill-tag">Latency Hiding</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-1">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">🏗</div>
+          <div class="skill-cat-name">GPU Architecture</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">SIMT Execution</span>
+          <span class="skill-tag hot">Memory Hierarchy</span>
+          <span class="skill-tag hot">Bandwidth Opt.</span>
+          <span class="skill-tag hot">Roofline Analysis</span>
+          <span class="skill-tag">Cache Systems</span>
+          <span class="skill-tag">NVIDIA T4 / A100</span>
+          <span class="skill-tag">Warp Scheduling</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-2">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">🔧</div>
+          <div class="skill-cat-name">Languages</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">C++</span>
+          <span class="skill-tag hot">C</span>
+          <span class="skill-tag hot">Python</span>
+          <span class="skill-tag">Assembly</span>
+          <span class="skill-tag">Bash</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">📊</div>
+          <div class="skill-cat-name">Profiling & Tooling</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">Nsight Systems</span>
+          <span class="skill-tag hot">Nsight Compute</span>
+          <span class="skill-tag">CMake</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">MeVisLab</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-1">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">⚙️</div>
+          <div class="skill-cat-name">HPC & Parallel Computing</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag hot">MPI</span>
+          <span class="skill-tag hot">OpenMP</span>
+          <span class="skill-tag">OpenCL</span>
+          <span class="skill-tag">Domain Decomposition</span>
+          <span class="skill-tag">Halo Exchange</span>
+          <span class="skill-tag">Multithreading</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-2">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">🤖</div>
+          <div class="skill-cat-name">ML / CV Frameworks</div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">Transformers</span>
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">SimpleITK</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">DICOM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                stroke="#F96D00" />
-        </svg></div>
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">03 — Career</div>
+    <h2 class="section-title">Experience</h2>
+    <div class="experience-list">
 
+      <div class="exp-card reveal">
+        <div class="exp-top">
+          <div class="exp-left">
+            <div class="exp-title">R&D Engineering Intern — Molecular Imaging</div>
+            <div class="exp-company">Siemens Healthineers · Bengaluru, Karnataka</div>
+          </div>
+          <div class="exp-meta">
+            <div class="exp-date">Jul 2024 – Jul 2025</div>
+            <div class="exp-badge">1 Year</div>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Delivered a quantitative Liver &amp; Renal PET-CT imaging application, <strong>cutting clinical radiologist workflow time by 40%</strong>.</li>
+          <li>Engineered a DL-based organ segmentation pipeline with <strong>90%+ Dice accuracy</strong> and a fail-safe fallback system, reducing manual mask creation from 11 min to 15 sec (<strong>44× improvement</strong>).</li>
+          <li>Created CUDA kernels fusing 10 sequential CT/PET filtering stages into a single kernel pass — <strong>50× acceleration</strong> with ~10× reduction in global memory traffic.</li>
+          <li>Built an adaptive DICOM metadata parser selecting scanner-specific GFR formulas across vendor modalities for reproducible quantitative measurements.</li>
+          <li>Built multi-time-point MIP visualization with interactive organ analysis across PET frames for improved clinical decision support.</li>
+        </ul>
+      </div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/scrollax.min.js"></script>
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-top">
+          <div class="exp-left">
+            <div class="exp-title">Machine Learning Intern</div>
+            <div class="exp-company">Ei Systems – Technex, IIT-BHU · Remote</div>
+          </div>
+          <div class="exp-meta">
+            <div class="exp-date">Aug 2021 – Sep 2021</div>
+            <div class="exp-badge past">2 Months</div>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built an end-to-end mobile recommendation system using scraped reviews, specs, and benchmarks for <strong>2,000+ devices</strong>.</li>
+          <li>Designed a multi-factor device scoring model achieving <strong>89% recommendation accuracy</strong> with a deployed web app.</li>
+        </ul>
+      </div>
 
-    <script src="js/main.js"></script>
+    </div>
+  </div>
+</section>
 
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">04 — Work</div>
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid">
+
+      <!-- Featured -->
+      <div class="project-featured reveal">
+        <div class="project-card">
+          <div>
+            <div class="project-num">01 / Featured</div>
+            <h3 class="project-title">GPU-Accelerated Convolution Engine</h3>
+            <p class="project-desc">
+              High-throughput im2col + cuBLAS SGEMM pipeline for batched 2D convolution on NVIDIA T4.
+              Designed a coalesced CUDA im2col kernel with shared memory tiling. Profiled with Nsight Systems
+              &amp; Compute, isolating cudaMalloc as the primary bottleneck — proposed memory pooling + stream
+              pipelining as next optimization vector.
+            </p>
+            <div class="project-metrics">
+              <div class="metric">
+                <div class="metric-val">790×</div>
+                <div class="metric-label">Speedup vs CPU (8K imgs)</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">112 GB/s</div>
+                <div class="metric-label">Memory Bandwidth</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">93%</div>
+                <div class="metric-label">Peak BW Utilization</div>
+              </div>
+            </div>
+            <div class="project-stack">
+              <span class="stack-tag">CUDA</span>
+              <span class="stack-tag">C++</span>
+              <span class="stack-tag">cuBLAS</span>
+              <span class="stack-tag">Nsight Compute</span>
+              <span class="stack-tag">Nsight Systems</span>
+              <span class="stack-tag">im2col</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/varekarprajwal" target="_blank" class="project-link">⎇ GitHub</a>
+            </div>
+          </div>
+          <div class="project-featured-visual">
+            <div class="perf-badge">
+              <div class="perf-badge-num">790×</div>
+              <div class="perf-badge-label">GPU Speedup</div>
+            </div>
+            <div class="perf-badge" style="background: var(--cyan-dim); border-color: rgba(0,212,255,0.3);">
+              <div class="perf-badge-num" style="font-size:1.6rem; color:var(--cyan);">93%</div>
+              <div class="perf-badge-label">T4 BW Util.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="reveal">
+        <div class="project-card">
+          <div class="project-num">02</div>
+          <h3 class="project-title">CUDA-Accelerated 3D CT/PET Image Operators</h3>
+          <p class="project-desc">
+            Accelerated volumetric CT/PET preprocessing by 50× by creating custom CUDA kernels
+            that fused 10 sequential filtering stages into a single kernel pass. Reduced global 
+            memory traffic by ~10× through improved data locality. Deployed into Siemens Healthineers
+            clinical PET-CT analysis platform.
+          </p>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="metric-val">50×</div>
+              <div class="metric-label">Speedup</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">10×</div>
+              <div class="metric-label">Global Mem Traffic ↓</div>
+            </div>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">CUDA</span>
+            <span class="stack-tag">C++</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">Kernel Fusion</span>
+          </div>
+          <div class="project-links">
+            <span class="project-link" style="opacity:0.5; cursor:default;">🏥 Siemens Internal</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="reveal reveal-delay-1">
+        <div class="project-card">
+          <div class="project-num">03</div>
+          <h3 class="project-title">Parallelized LTxXORP Feature Extraction</h3>
+          <p class="project-desc">
+            Optimized CUDA kernel using shared memory tiling and kernel fusion achieving 100× speedup
+            over CPU. Achieved 13× MPI speedup via domain decomposition and halo exchange, scaling across
+            1–8 ranks. Identified inter-rank communication overhead as the primary scaling bottleneck.
+            Published as first author in Springer CIS 2024.
+          </p>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="metric-val">100×</div>
+              <div class="metric-label">CUDA Speedup</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">13×</div>
+              <div class="metric-label">MPI Speedup</div>
+            </div>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">CUDA</span>
+            <span class="stack-tag">MPI</span>
+            <span class="stack-tag">C++</span>
+            <span class="stack-tag">OpenCV</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/varekarprajwal/HPCS_LBP" target="_blank" class="project-link">⎇ GitHub</a>
+            <a href="https://doi.org/10.1007/978-981-96-2700-4_5" target="_blank" class="project-link pub">📄 Springer</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="reveal">
+        <div class="project-card">
+          <div class="project-num">04</div>
+          <h3 class="project-title">Real-Time Defect Detection Pipeline</h3>
+          <p class="project-desc">
+            Classical CV hybrid pipeline using color-space thresholding and morphological operations
+            for real-time defect grading on low-resource hardware. Achieved 92% detection accuracy
+            with 18% reduction in false negatives through iterative calibration.
+          </p>
+          <div class="project-metrics">
+            <div class="metric">
+              <div class="metric-val">92%</div>
+              <div class="metric-label">Detection Accuracy</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">18%</div>
+              <div class="metric-label">False Negative ↓</div>
+            </div>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">NumPy</span>
+            <span class="stack-tag">Scikit-Image</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/varekarprajwal/RMTC" target="_blank" class="project-link">⎇ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="reveal reveal-delay-1">
+        <div class="project-card">
+          <div class="project-num">05</div>
+          <h3 class="project-title">PyTorch AlexNet Reimplementation (CIFAR-10)</h3>
+          <p class="project-desc">
+            From-scratch AlexNet reimplementation in PyTorch with portable training pipeline
+            supporting CPU, CUDA, and MPS backends. Benchmarked throughput and accuracy trade-offs
+            across all hardware backends — useful for understanding framework dispatch overhead.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">Torchvision</span>
+            <span class="stack-tag">CUDA/MPS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/varekarprajwal" target="_blank" class="project-link">⎇ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">05 — Academic</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+
+      <div class="edu-card reveal">
+        <div class="edu-degree">M.Tech in Computer Science &amp; Engineering</div>
+        <div class="edu-school">Manipal Institute of Technology, Udupi</div>
+        <div class="edu-meta">
+          <div class="edu-year">Aug 2023 – May 2025</div>
+          <div class="edu-gpa">CGPA: 8.13/10</div>
+        </div>
+        <div class="edu-courses">
+          Relevant: High Performance Computing · Advanced ML · Deep Learning · Medical Image Analysis
+        </div>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-degree">B.E. in Electronics &amp; Communication Engineering</div>
+        <div class="edu-school">Sahyadri College of Engineering &amp; Management (Autonomous), Mangaluru</div>
+        <div class="edu-meta">
+          <div class="edu-year">Aug 2018 – Aug 2022</div>
+          <div class="edu-gpa">CGPA: 7.47/10</div>
+        </div>
+        <div class="edu-courses">
+          Relevant: Computer Organization &amp; Architecture · Embedded Systems · VLSI Design
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACHIEVEMENTS ===== -->
+<section id="achievements">
+  <div class="container">
+    <div class="section-label">06 — Highlights</div>
+    <h2 class="section-title">Achievements</h2>
+    <div class="achievements-grid">
+
+      <div class="achievement-card reveal">
+        <div class="achievement-icon">📄</div>
+        <div class="achievement-title">Springer Research Publication</div>
+        <div class="achievement-desc">
+          First author on "Parallelized Local Texton XOR Patterns Extraction" published in Springer — 
+          Computational Intelligence &amp; Security (CIS) 2024. Topics: MPI, CUDA, Content-Based Image Retrieval.
+        </div>
+        <div class="achievement-meta">Springer · DOI: 10.1007/978-981-96-2700-4_5</div>
+      </div>
+
+      <div class="achievement-card reveal reveal-delay-1">
+        <div class="achievement-icon">⚡</div>
+        <div class="achievement-title">790× GPU Speedup Achieved</div>
+        <div class="achievement-desc">
+          Achieved 790× GPU speedup over CPU baseline on batched convolution (~8K image inputs) 
+          using custom im2col CUDA kernel + cuBLAS SGEMM pipeline on NVIDIA T4.
+        </div>
+        <div class="achievement-meta">GPU Convolution Engine · Jan–Mar 2026</div>
+      </div>
+
+      <div class="achievement-card reveal reveal-delay-2">
+        <div class="achievement-icon">🏥</div>
+        <div class="achievement-title">Clinical Workflow Impact at Siemens</div>
+        <div class="achievement-desc">
+          Delivered 40% reduction in clinical radiologist workflow time. DL-based fallback reduced
+          manual mask creation from 11 min to just 15 seconds — a 44× improvement in model-failure scenarios.
+        </div>
+        <div class="achievement-meta">Siemens Healthineers · 2024–2025</div>
+      </div>
+
+      <div class="achievement-card reveal">
+        <div class="achievement-icon">📡</div>
+        <div class="achievement-title">93% Peak Memory Bandwidth</div>
+        <div class="achievement-desc">
+          Achieved 112 GB/s memory bandwidth on NVIDIA T4 — 93% of theoretical peak — through 
+          coalesced access patterns and shared memory tiling. Profiled and validated with Nsight Compute.
+        </div>
+        <div class="achievement-meta">NVIDIA T4 GPU · Nsight Verified</div>
+      </div>
+
+      <div class="achievement-card reveal reveal-delay-1">
+        <div class="achievement-icon">🔬</div>
+        <div class="achievement-title">M.Tech at Manipal Institute of Technology</div>
+        <div class="achievement-desc">
+          Completed M.Tech in Computer Science &amp; Engineering with 8.13 CGPA, 
+          specializing in High Performance Computing, Advanced ML, and Medical Image Analysis.
+        </div>
+        <div class="achievement-meta">MIT Manipal · 2023–2025</div>
+      </div>
+
+      <div class="achievement-card reveal reveal-delay-2">
+        <div class="achievement-icon">🔗</div>
+        <div class="achievement-title">13× MPI Scaling on 8 Ranks</div>
+        <div class="achievement-desc">
+          Achieved 13× speedup via MPI domain decomposition and halo exchange, scaling across 1–8 
+          ranks for distributed CBIR feature extraction. First to characterize the inter-rank comm bottleneck.
+        </div>
+        <div class="achievement-meta">HPC Research · 2023</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">07 — Get In Touch</div>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-2); line-height: 1.8; margin-bottom: 1.5rem;">
+          I'm actively looking for GPU Systems, HPC, or ML Infrastructure roles. If you're working on
+          compute-intensive problems — kernels, memory systems, or training infrastructure — I'd love to talk.
+        </p>
+        <div class="contact-info-list">
+          <a href="mailto:varekarprajwal@gmail.com" class="contact-info-item">
+            <div class="contact-info-icon">✉</div>
+            <div class="contact-info-text">
+              <span class="contact-info-label">Email</span>
+              <span class="contact-info-value">varekarprajwal@gmail.com</span>
+            </div>
+          </a>
+          <a href="tel:+918217620898" class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div class="contact-info-text">
+              <span class="contact-info-label">Phone</span>
+              <span class="contact-info-value">+91 82176 20898</span>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/prajwal-purushotham-varekar-645253181" target="_blank" class="contact-info-item">
+            <div class="contact-info-icon">in</div>
+            <div class="contact-info-text">
+              <span class="contact-info-label">LinkedIn</span>
+              <span class="contact-info-value">linkedin.com/in/varekarprajwal</span>
+            </div>
+          </a>
+          <a href="https://github.com/varekarprajwal" target="_blank" class="contact-info-item">
+            <div class="contact-info-icon">⎇</div>
+            <div class="contact-info-text">
+              <span class="contact-info-label">GitHub</span>
+              <span class="contact-info-value">github.com/varekarprajwal</span>
+            </div>
+          </a>
+          <a href="https://varekarprajwal.github.io" target="_blank" class="contact-info-item">
+            <div class="contact-info-icon">🌐</div>
+            <div class="contact-info-text">
+              <span class="contact-info-label">Portfolio</span>
+              <span class="contact-info-value">varekarprajwal.github.io</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <input class="form-input" type="text" id="subject" name="subject" placeholder="Opportunity / Collaboration / General">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell me about the role or project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn" style="align-self: flex-start;">
+            Send Message →
+          </button>
+          <div id="formStatus" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--green); display: none;">
+            ✓ Message sent! I'll get back to you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        © <span id="year"></span> <span>Prajwal Purushotham Varekar</span>. Built from scratch — no templates.
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/varekarprajwal" target="_blank" class="footer-social" aria-label="GitHub">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/prajwal-purushotham-varekar-645253181" target="_blank" class="footer-social" aria-label="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:varekarprajwal@gmail.com" class="footer-social" aria-label="Email">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== THEME TOGGLE ===== */
+const html = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+let dark = true;
+themeToggle.addEventListener('click', () => {
+  dark = !dark;
+  html.setAttribute('data-theme', dark ? 'dark' : 'light');
+  themeToggle.textContent = dark ? '☀' : '☾';
+});
+
+/* ===== MOBILE NAV ===== */
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+/* ===== TYPED ROLE ===== */
+const roles = ['GPU Systems Engineer', 'CUDA Kernel Engineer', 'HPC Developer', 'ML Systems Engineer'];
+let ri = 0, ci = 0, deleting = false;
+const roleEl = document.getElementById('typed-role');
+function typeLoop() {
+  const t = roles[ri];
+  if (!deleting) {
+    roleEl.textContent = t.slice(0, ++ci);
+    if (ci === t.length) { deleting = true; setTimeout(typeLoop, 1800); return; }
+  } else {
+    roleEl.textContent = t.slice(0, --ci);
+    if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; setTimeout(typeLoop, 300); return; }
+  }
+  setTimeout(typeLoop, deleting ? 60 : 90);
+}
+setTimeout(typeLoop, 1200);
+
+/* ===== SCROLL REVEAL ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ===== YEAR ===== */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ===== CONTACT FORM ===== */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const status = document.getElementById('formStatus');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.style.display = 'none';
+    status.style.display = 'block';
+    e.target.reset();
+  }, 1200);
+}
+
+/* ===== ACTIVE NAV LINK ===== */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  const pos = window.scrollY + 100;
+  sections.forEach(s => {
+    if (pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight) {
+      navLinks.forEach(l => {
+        l.style.color = l.getAttribute('href') === '#' + s.id ? 'var(--amber)' : '';
+      });
+    }
+  });
+}, { passive: true });
+</script>
 </body>
-
 </html>
